@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-blue-900 text-white min-h-screen;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}

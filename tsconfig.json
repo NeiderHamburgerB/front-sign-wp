@@ -1,0 +1,15 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    "jsx": "react-jsx", // Esto habilita el soporte para JSX con React 17+
+    "esModuleInterop": true, // Esto permite importar módulos con 'export = React'
+    "allowSyntheticDefaultImports": true, // Para importar React por defecto
+    "module": "esnext", // Asegúrate de que el módulo sea compatible
+    "target": "es6", // Target para ES6 o superior
+    "moduleResolution": "node" // Resolución de módulos tipo Node
+  }
+}
