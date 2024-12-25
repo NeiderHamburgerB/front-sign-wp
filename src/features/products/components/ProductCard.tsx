@@ -48,6 +48,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           className="w-16 p-2 border border-gray-300 rounded text-center"
         />
       </div>
+      {
+        <p className="text-red-500 mb-2">Stock: {product.stock}</p>
+      } 
       <button
         onClick={handleSelect}
         className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800"
