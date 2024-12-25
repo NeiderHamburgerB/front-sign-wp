@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { checkPaymentStatus } from '../actions/checkoutActions';
+import { resetCheckout } from '../reducers/checkoutSlice';
 
 export const FinalStatusPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -15,6 +16,16 @@ export const FinalStatusPage: React.FC = () => {
       dispatch(checkPaymentStatus(id));
     }
   }, [id, dispatch, navigate]);
+
+  useEffect(() => {
+    if (paymentStatus) {
+      const timer = setTimeout(() => {
+        dispatch(resetCheckout()); 
+        navigate('/'); 
+      }, 3000); 
+      return () => clearTimeout(timer); 
+    }
+  }, [paymentStatus, dispatch, navigate]);
 
   const handleGoHome = () => {
     navigate('/');
