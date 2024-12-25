@@ -23,18 +23,18 @@ export interface TokenDataResponse {
 
 
 export interface CheckoutState {
-  cardToken: string | null;             
-  cardData: CardData | null;
-  deliveryData: DeliveryData | null;
-  acceptanceToken: string | null;
-  personalDataAuthToken: string | null;
-  permalinkA: string | null;
-  permalinkB: string | null;
+  cardToken: string ;             
+  cardData: CardData ;
+  deliveryData: DeliveryData ;
+  acceptanceToken: string ;
+  personalDataAuthToken: string ;
+  permalinkA: string ;
+  permalinkB: string ;
   acceptedTerms: boolean;
   loading: boolean;
-  error: string | null;
-  id: string | null;            
-  paymentStatus: string | null;       
+  error: string ;
+  id: string ;            
+  paymentStatus: string ;       
 }
 export interface Props {
   onClose: () => void;

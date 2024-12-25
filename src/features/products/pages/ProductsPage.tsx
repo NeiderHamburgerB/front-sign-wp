@@ -17,7 +17,7 @@ import {
 } from "../selectors/productsSelectors";
 import { Menu } from "../../../shared/components/menu";
 
-export const API_URL = process.env.VITE_API_MAIN || 'http://localhost:3000/api/main';
+export const API_URL = import.meta.env.VITE_API_MAIN || 'http://localhost:3000/api/main';
 
 export const ProductsPage: React.FC = () => {
   const dispatch = useAppDispatch();

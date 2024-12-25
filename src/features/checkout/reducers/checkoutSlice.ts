@@ -8,18 +8,30 @@ import {
 import { CheckoutState } from "../types/Checkout";
 
 const initialState: CheckoutState = {
-  cardToken: null,
-  cardData: null,
-  deliveryData: null,
-  acceptanceToken: null,
-  personalDataAuthToken: null,
-  permalinkA: null,
-  permalinkB: null,
-  acceptedTerms: false,
-  loading: false,
-  error: null,
-  id: null,
-  paymentStatus: null,
+  cardToken: "",
+  cardData: {
+    number: "",
+    cvc: "",
+    exp_month: "",
+    exp_year: "",
+    card_holder: "",
+    quotas: "",
+    email: "",
+  }, 
+  deliveryData: {
+    address: "",
+    city: "",
+    phone: "",
+  }, 
+  acceptanceToken: "", 
+  personalDataAuthToken: "", 
+  permalinkA: "", 
+  permalinkB: "",
+  acceptedTerms: false, 
+  loading: false, 
+  error: "", 
+  id: "",
+  paymentStatus: "", 
 };
 
 export const checkoutSlice = createSlice({
@@ -35,13 +47,14 @@ export const checkoutSlice = createSlice({
     setAcceptedTerms: (state, action) => {
       state.acceptedTerms = action.payload;
     },
+    resetCheckout: () => initialState,
   },
   extraReducers: (builder) => {
     // requestCardToken
     builder
       .addCase(requestCardToken.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.error = "";
       })
       .addCase(requestCardToken.fulfilled, (state, action) => {
         state.loading = false;
@@ -56,7 +69,7 @@ export const checkoutSlice = createSlice({
     builder
       .addCase(fetchPaymentTokens.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.error = "";
       })
       .addCase(fetchPaymentTokens.fulfilled, (state, action) => {
         state.loading = false;
@@ -74,7 +87,7 @@ export const checkoutSlice = createSlice({
     builder
       .addCase(createPayment.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.error = "";
       })
       .addCase(createPayment.fulfilled, (state, action) => {
         state.loading = false;
@@ -89,7 +102,7 @@ export const checkoutSlice = createSlice({
     builder
       .addCase(checkPaymentStatus.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.error = "";
       })
       .addCase(checkPaymentStatus.fulfilled, (state, action) => {
         state.loading = false;
@@ -102,5 +115,5 @@ export const checkoutSlice = createSlice({
   },
 });
 
-export const { setCardData, setDeliveryData, setAcceptedTerms } = checkoutSlice.actions;
+export const { setCardData, setDeliveryData, setAcceptedTerms, resetCheckout } = checkoutSlice.actions;
 export default checkoutSlice.reducer;

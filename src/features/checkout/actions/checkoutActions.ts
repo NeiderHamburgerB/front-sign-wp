@@ -1,8 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../../../app/store";
 import { CardData, TokenDataResponse } from "../types/Checkout";
+import { resetCheckout } from "../reducers/checkoutSlice";
 
-export const API_URL = process.env.VITE_API_MAIN || 'http://localhost:3000/api/main';
+export const API_URL = import.meta.env.VITE_API_MAIN || 'http://localhost:3000/api/main';
 
 // Token de la tarjeta
 export const requestCardToken = createAsyncThunk<
@@ -125,3 +126,11 @@ export const checkPaymentStatus = createAsyncThunk<
   }
   return status;
 });
+
+export const resetCheckoutWithDelay = createAsyncThunk(
+  "checkout/resetWithDelay",
+  async (_, { dispatch }) => {
+    await new Promise((resolve) => setTimeout(resolve, 3000)); 
+    dispatch(resetCheckout()); 
+  }
+);
