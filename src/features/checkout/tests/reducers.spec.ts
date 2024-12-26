@@ -12,18 +12,30 @@ import {
 import { describe, it, expect } from "@jest/globals";
 
 const initialState = {
-    cardToken: null,
-    cardData: null,
-    deliveryData: null,
-    acceptanceToken: null,
-    personalDataAuthToken: null,
-    permalinkA: null,
-    permalinkB: null,
-    acceptedTerms: false,
-    loading: false,
-    error: null,
-    id: null,
-    paymentStatus: null,
+  cardToken: "",
+  cardData: {
+    number: "",
+    cvc: "",
+    exp_month: "",
+    exp_year: "",
+    card_holder: "",
+    quotas: "",
+    email: "",
+  }, 
+  deliveryData: {
+    address: "",
+    city: "",
+    phone: "",
+  }, 
+  acceptanceToken: "", 
+  personalDataAuthToken: "", 
+  permalinkA: "", 
+  permalinkB: "",
+  acceptedTerms: false, 
+  loading: false, 
+  error: "", 
+  id: "",
+  paymentStatus: "", 
 };
 
 describe("checkoutSlice Reducer", () => {
